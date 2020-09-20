@@ -1,53 +1,55 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-//rahulonlinetutor@gmail.com
+
+import com.paulhammant.ngwebdriver.ByAngular;
+import com.paulhammant.ngwebdriver.ByAngularButtonText;
+import resources.base;
+import com.paulhammant.ngwebdriver.NgWebDriver;
+
 public class LoginPage {
 
-	
 	public WebDriver driver;
+	public static NgWebDriver ngDriver;
 	
-	By email=By.cssSelector("[id='user_email']");
-	By password=By.cssSelector("[type='password']");
-	By login=By.cssSelector("[value='Log In']");
-	By forgotPassword = By.cssSelector("[href*='password/new']");
+	//Fields External WebSite Demo
+	By postproject=By.xpath(".//*//a[contains(text(),' Post a Project ')]");
 	
-	
-	
+	//Fields for Gene Demo
+	By username=By.xpath("<<Enter username xpath here>>");
+	By password=By.xpath("");
+	By loginbutton=By.xpath("");
 	
 	public LoginPage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
+		this.driver=driver;		
+	}
+
+	public LandingPage getLogin()
+	{
+		ngDriver = new NgWebDriver((JavascriptExecutor) driver);
+		ngDriver.waitForAngularRequestsToFinish();
 		
-		this.driver=driver;
 		
-	}
-
-
-
-public ForgotPassword forgotPassword()
-{
-	driver.findElement(forgotPassword).click();
-	return new ForgotPassword(driver);
-	
-}
-	public WebElement getEmail()
-	{
-		return driver.findElement(email);
-	}
-	
-
-	public WebElement getPassword()
-	{
-		return driver.findElement(password);
+		/*
+		 * driver.findElement(username).sendKeys("");
+		 * driver.findElement(password).sendKeys("");
+		 */
+		
+		
+		//For External Website Demo
+		driver.findElement(postproject).click();
+		
+		ngDriver.waitForAngularRequestsToFinish();		 
+		
+		LandingPage lp=new LandingPage(driver);
+		return lp;	 
 	}
 	
-	public WebElement getLogin()
-	{
-		return driver.findElement(login);
-	}
-	
-	
-	
+	/*
+	 * public WebElement getNavigationBar() { return driver.findElement(NavBar); }
+	 * public WebElement getTitle() { return driver.findElement(title); }
+	 */
 }

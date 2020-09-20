@@ -4,17 +4,6 @@
   <listeners>
     <listener class-name="testCases.Listeners"/>
   </listeners>
-  <test thread-count="5" name="Validating User login(failed)">
-    <classes>
-      <class name="testCases.HomePage">
-        <methods>
-          <include name="initialize"/>
-          <include name="teardown"/>
-          <include name="basePageNavigation"/>
-        </methods>
-      </class> <!-- testCases.HomePage -->
-    </classes>
-  </test> <!-- Validating User login(failed) -->
   <test thread-count="5" name="Validating title in the Page(failed)">
     <classes>
       <class name="testCases.validateTitle">

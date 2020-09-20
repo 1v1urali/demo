@@ -8,8 +8,6 @@
   <name>AngularDemo</name>
   <url>http://maven.apache.org</url>
   
-  
-
   <build>
    <resources>
         <resource>
@@ -69,6 +67,12 @@
   <scope>test</scope>
 </dependency>
 
+<dependency>
+    <groupId>com.paulhammant</groupId>
+    <artifactId>ngwebdriver</artifactId>
+    <version>1.0</version>
+</dependency>
+
       <dependency>
     <groupId>org.apache.logging.log4j</groupId>
     <artifactId>log4j-api</artifactId>
@@ -80,4 +84,5 @@
     <version>2.8.2</version>
   </dependency>
   </dependencies>
+  
 </project>

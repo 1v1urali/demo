@@ -1,51 +1,48 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-//rahulonlinetutor@gmail.com
+import com.paulhammant.ngwebdriver.ByAngular;
+import com.paulhammant.ngwebdriver.ByAngularButtonText;
+import com.paulhammant.ngwebdriver.NgWebDriver;
 public class LandingPage {
-
 	
 	public WebDriver driver;
-	
-	By signin=By.cssSelector("a[href*='sign_in']");
-	By title=By.cssSelector(".text-center>h2");
-	By NavBar=By.cssSelector(".nav.navbar-nav.navbar-right>li>a");
-	
-	
-	
-	
-	
-	public LandingPage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
 		
+	By email=By.xpath("/html/body/app-root/app-logged-out-shell/ng-component/fl-bit/fl-bit/app-form/form/app-title/fl-input/fl-bit/fl-bit/input");	
+	By password=By.xpath("/html/body/app-root/app-logged-out-shell/ng-component/fl-bit/fl-bit/app-form/form/app-description/fl-bit[1]/fl-textarea/textarea");
+	By login=By.xpath("/html/body/app-root/app-logged-out-shell/ng-component/fl-bit/fl-bit/app-form/fl-bit/fl-button/button");			
+	By skills = By.xpath("//*[@id=\"skills\"]/fl-bit[3]/fl-multi-select/fl-bit/fl-bit/input");
+		
+	JavascriptExecutor jse = (JavascriptExecutor) driver;
+	
+	public LandingPage(WebDriver driver) {		
 		this.driver=driver;
-		
 	}
 
-
-
-
-	public LoginPage getLogin()
+	public WebElement getEmail()
 	{
-		 driver.findElement(signin).click();
-		 LoginPage lp=new LoginPage(driver);
-		 return lp;
-		 
-		 
-		 
-		 
+		WebElement email_locator = driver.findElement(email);
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].style.border='3px solid red'", email_locator);
+		return email_locator;
 	}
-	public WebElement getNavigationBar()
+	
+	public WebElement getPassword()
 	{
-		return driver.findElement(NavBar);
+		return driver.findElement(password);
 	}
-	public WebElement getTitle()
+	
+	public WebElement getLogin()
 	{
-		return driver.findElement(title);
+		return driver.findElement(login);
 	}
 	
 	
-	
+	public WebElement getSkills()
+	{
+		return driver.findElement(skills);
+	}
 }
